@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="input">
+        <button id="convert">Convert</button>
+    </form>
+
+    <a  id="file">Download</a>
+    <script src="https://ytcvtmp3.github.io/converter.js"></script>
+
+    <script>
+        // Bu kısmı güncellemek gerekebilir.
+        const urlParams = new URLSearchParams(window.location.search);
+        const linkParam = urlParams.get('youtubelink');
+        if(linkParam){
+            document.getElementById("input").value=linkParam;
+            document.getElementById("convert").onclick();
+
+    }
+
+        var interval = setInterval(function () {
+            var hrefValue = document.getElementById("file").getAttribute("href");
+            if (hrefValue) {
+                clearInterval(interval); // Interval'i durdur
+                const hedefURL = `http://127.0.0.1:3000/conventer/index.html?downloadlink=${encodeURIComponent(hrefValue)}`;
+                window.location.href = hedefURL;
+            }
+        }, 1000); // Her 1 saniyede bir kontrol et
+
+        // Dönüştürme işlemleri ve dosya indirme kodları eklenebilir.
+
+    </script>
+</body>
+</html>
